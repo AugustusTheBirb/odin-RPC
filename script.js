@@ -15,6 +15,10 @@ function capitalize(s){
 
 function getPlayerChoice(){
     choice = prompt("Rock paper or scissors?").toLowerCase();
+    if (!names.includes(choice)){
+        console.log("Invalid input");
+        getPlayerChoice();
+    }
     return names.indexOf(choice);
 }
 
@@ -38,4 +42,10 @@ function playRound(playerChoice, computerChoice){
     console.log(`The scores are: You-${playerScore}, Computer-${computerScore}`)
 }
 
-playRound(0,0)
+function playGame(rounds) {
+    for (let i=0; i<rounds; i++){   
+        playRound(getPlayerChoice(),getComputerChoice());
+    }
+}
+
+playGame(5);
